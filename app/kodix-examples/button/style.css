@@ -1,0 +1,26 @@
+.button {
+    color: black;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#paper {
+    position: absolute;
+    left: 50%;
+    top: -34px;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+    z-index: 2;
+    opacity: 0;
+}
+.svg{
+    width: 24px;
+    height: 24px;
+    
+}

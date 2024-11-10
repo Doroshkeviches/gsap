@@ -1,0 +1,25 @@
+.border-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border: 2px solid transparent; /* Основная граница */
+    transition: border-color 0.3s ease;
+  }
+  
+  .border-box::before,
+  .border-box::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+  }
+  svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  
