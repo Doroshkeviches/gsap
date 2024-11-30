@@ -38,11 +38,11 @@ function OpacityAnimation(props: Props) {
         <>
             <div className='w-full h-screen'></div>
             <div className='flex flex-col items-center gap-8 trigger'>
-                <div className='p-4 border-2 border-white w-96 item'></div>
-                <div className='p-4 border-2 border-white w-96 item'></div>
-                <div className='p-4 border-2 border-white w-96 item'></div>
-                <div className='p-4 border-2 border-white w-96 item'></div>
-                <div className='p-4 border-2 border-white w-96 item'></div>
+                <div className='p-4 border-2 border-black w-96 item'></div>
+                <div className='p-4 border-2 border-black w-96 item'></div>
+                <div className='p-4 border-2 border-black w-96 item'></div>
+                <div className='p-4 border-2 border-black w-96 item'></div>
+                <div className='p-4 border-2 border-black w-96 item'></div>
             </div>
             <div className='w-full h-screen'></div>
         </>

@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useRef } from 'react'
 import './style.css'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -8,54 +8,59 @@ interface Props { }
 
 function Button(props: Props) {
     const { } = props
+    const ref = useRef<HTMLDivElement>(null)
     useGSAP(() => {
+        
+        gsap.registerPlugin(MorphSVGPlugin)
+
+
+        
+        // GSDevTools.create()
+    }, [])
+    const handleClick = () => {
         const button = document.querySelector('.button')
         const svg = document.querySelector('#svg')
         const paper = document.querySelector('#paper')
-
-
         console.log(button?.clientWidth, svg?.clientWidth)
-        gsap.registerPlugin(MorphSVGPlugin)
-        gsap.registerPlugin(GSDevTools)
-        gsap.set('#paper', {
-            opacity: 0
-        })
-        const tl = gsap.timeline()
-        tl.to('#trash_init', {
-            morphSVG: '#trash_last'
-        })
-            .to('#svg', {
-                x: button?.clientWidth! / 2 - svg?.clientWidth!,
-                scale: 1.5
-            })
-            .add(gsap.to("#span", {
+            // gsap.registerPlugin(GSDevTools)
+            gsap.set('#paper', {
                 opacity: 0
-            }), "<")
-            .to('#paper', {
-                opacity: 1,
             })
-
-            .to('#paper', {
-                y: 100,
+            const tl = gsap.timeline()
+            tl.to('#trash_init', {
+                morphSVG: '#trash_last'
             })
-            .add(gsap.to("#paperSVG", {
-                morphSVG: "#check"
-            }), "<")
-            .to('#paper', {
-                opacity: 0,
-            })
-            .to('#svg', {
-                x: 0,
-            })
-            .add(gsap.to("#span", {
-                opacity: 1
-            }), "<")
-        GSDevTools.create()
-    }, [])
+                .to('#svg', {
+                    x: button?.clientWidth! / 2 - svg?.clientWidth!,
+                    scale: 1.5
+                })
+                .add(gsap.to("#span", {
+                    opacity: 0
+                }), "<")
+                .to('#paper', {
+                    opacity: 1,
+                })
+    
+                .to('#paper', {
+                    y: 100,
+                })
+                .add(gsap.to("#paperSVG", {
+                    morphSVG: "#check"
+                }), "<")
+                .to('#paper', {
+                    opacity: 0,
+                })
+                .to('#svg', {
+                    x: 0,
+                })
+                .add(gsap.to("#span", {
+                    opacity: 1
+                }), "<")
+    }
     return (
         <div className='w-full h-screen flex items-center justify-center'>
 
-            <div className='button'>
+            <div className='button' onClick={handleClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" id='svg' width={24} height={24} viewBox="0 0 24 24" fill="currentColor">
                     <defs>
                         <path id='trash_last' d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z" />
