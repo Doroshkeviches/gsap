@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wonder Women | MultiVersus
+* source:	https://sketchfab.com/3d-models/wonder-women-multiversus-8005417022ca451f81354a9d7ccbc86a
+* author:	King_45 (https://sketchfab.com/King_45)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wonder Women | MultiVersus" (https://sketchfab.com/3d-models/wonder-women-multiversus-8005417022ca451f81354a9d7ccbc86a) by King_45 (https://sketchfab.com/King_45) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

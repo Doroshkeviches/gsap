@@ -42,6 +42,7 @@ const config: Config = {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
+				airpodsBackground: 'hsl(var(--airpods-color))',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -55,7 +56,11 @@ const config: Config = {
 				'jopa': '#000000',
 			},
 			spacing: {
-				'128': '700px'
+				'128': '700px',
+				'500': '500px',
+				'100': '100px',
+
+
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -64,19 +69,22 @@ const config: Config = {
 			},
 			boxShadow: {
 				input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
-			  },
+			},
+			fontFamily: {
+				major: ['var(--font-major)'],
+			},
 		}
 	},
-	plugins: [require("tailwindcss-animate"),addVariablesForColors],
+	plugins: [require("tailwindcss-animate"), addVariablesForColors],
 };
 function addVariablesForColors({ addBase, theme }: any) {
 	let allColors = flattenColorPalette(theme("colors"));
 	let newVars = Object.fromEntries(
-	  Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+		Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
 	);
-   
+
 	addBase({
-	  ":root": newVars,
+		":root": newVars,
 	});
-  }
+}
 export default config;

@@ -10,11 +10,11 @@ function Button(props: Props) {
     const { } = props
     const ref = useRef<HTMLDivElement>(null)
     useGSAP(() => {
-        
+
         gsap.registerPlugin(MorphSVGPlugin)
 
 
-        
+
         // GSDevTools.create()
     }, [])
     const handleClick = () => {
@@ -22,45 +22,57 @@ function Button(props: Props) {
         const svg = document.querySelector('#svg')
         const paper = document.querySelector('#paper')
         console.log(button?.clientWidth, svg?.clientWidth)
-            // gsap.registerPlugin(GSDevTools)
-            gsap.set('#paper', {
+        // gsap.registerPlugin(GSDevTools)
+        gsap.set('#paper', {
+            opacity: 0
+        })
+        const tl = gsap.timeline()
+        tl.to('#trash_init', {
+            morphSVG: '#trash_last'
+        })
+            .to('#svg', {
+                x: button.clientWidth / 2 - svg.clientWidth,
+                scale: 1.5
+            })
+            .to("#span", {
                 opacity: 0
+            }, "<")
+            .to('#paper', {
+                opacity: 1,
             })
-            const tl = gsap.timeline()
-            tl.to('#trash_init', {
-                morphSVG: '#trash_last'
+            .to('#paper', {
+                y: 100,
             })
-                .to('#svg', {
-                    x: button?.clientWidth! / 2 - svg?.clientWidth!,
-                    scale: 1.5
-                })
-                .add(gsap.to("#span", {
-                    opacity: 0
-                }), "<")
-                .to('#paper', {
-                    opacity: 1,
-                })
-    
-                .to('#paper', {
-                    y: 100,
-                })
-                .add(gsap.to("#paperSVG", {
-                    morphSVG: "#check"
-                }), "<")
-                .to('#paper', {
-                    opacity: 0,
-                })
-                .to('#svg', {
-                    x: 0,
-                })
-                .add(gsap.to("#span", {
-                    opacity: 1
-                }), "<")
+            .to("#paperSVG", {
+                morphSVG: "#check"
+            }, "<")
+            .to('#paper', {
+                opacity: 0,
+            })
+            .to('#trash_init', {
+                morphSVG: '#trash_init',
+            })
+            .to('#svg', {
+                x: 0,
+                scale: 1
+            }, "<")
+            .to("#span", {
+                opacity: 1
+            }, "<")
+            .to('#paper', {
+                opacity: 0,
+            })
+            .to('#paper', {
+                y: 0,
+            })
+            .to("#paperSVG", {
+                morphSVG: "#paperSVG"
+            })
     }
     return (
         <div className='w-full h-screen flex items-center justify-center'>
 
-            <div className='button' onClick={handleClick}>
+            <div className='button bg-cyan-400' onClick={handleClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" id='svg' width={24} height={24} viewBox="0 0 24 24" fill="currentColor">
                     <defs>
                         <path id='trash_last' d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z" />

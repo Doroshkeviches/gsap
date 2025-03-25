@@ -1,7 +1,7 @@
 'use client'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
-import { GSDevTools, MorphSVGPlugin } from 'gsap-trial/all'
+import { MorphSVGPlugin } from 'gsap-trial/all'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
 interface Props { }
@@ -66,9 +66,6 @@ function Progressbar(props: Props) {
             .to("#zayac1", { morphSVG: "#zayac1" })
 
     }
-    useGSAP(() => {
-        GSDevTools.create();
-    }, [])
     useEffect(() => {
         const tl = gsap.timeline()
         setTween(tl)

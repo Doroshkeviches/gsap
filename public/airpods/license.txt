@@ -1,0 +1,11 @@
+Model Information:
+* title:	Airpods Max
+* source:	https://sketchfab.com/3d-models/airpods-max-92ccaa254d814e80965b76ed10f89553
+* author:	molignanoantonio12 (https://sketchfab.com/molignanoantonio12)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airpods Max" (https://sketchfab.com/3d-models/airpods-max-92ccaa254d814e80965b76ed10f89553) by molignanoantonio12 (https://sketchfab.com/molignanoantonio12) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

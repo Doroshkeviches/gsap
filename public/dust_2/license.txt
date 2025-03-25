@@ -1,0 +1,11 @@
+Model Information:
+* title:	De_dust2
+* source:	https://sketchfab.com/3d-models/de-dust2-935c47ecc9574a29a72df694c4f84d5d
+* author:	CHANO (https://sketchfab.com/pedroribeiro.1104)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "De_dust2" (https://sketchfab.com/3d-models/de-dust2-935c47ecc9574a29a72df694c4f84d5d) by CHANO (https://sketchfab.com/pedroribeiro.1104) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

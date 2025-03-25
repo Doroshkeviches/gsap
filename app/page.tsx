@@ -9,6 +9,9 @@ export default function Home() {
       <Link href={'/flip-animations'}>flip-animations</Link>
       <Link href={'/opacity-animations'}>opacity-animations</Link>
       <Link href={'/kodix-examples'}>kodix-examples</Link>
+      <Link href={'/draggable'}>draggable</Link>
+
+      
 
     </div>
   );

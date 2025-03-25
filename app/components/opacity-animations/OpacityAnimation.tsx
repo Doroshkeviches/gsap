@@ -13,7 +13,7 @@ function OpacityAnimation(props: Props) {
     useGSAP(() => {
         const trigger = document.querySelector('.trigger')
         const itemsArray = gsap.utils.toArray('.item')
-        itemsArray.forEach((it: any,index) => {
+        itemsArray.forEach((it: any, index) => {
             gsap.set(it, {
                 opacity: 0,
                 yPercent: 200
@@ -33,6 +33,7 @@ function OpacityAnimation(props: Props) {
                 yPercent: 0,
             })
         })
+        
     }, [])
     return (
         <>

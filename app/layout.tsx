@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import localFont from 'next/font/local'
 
 export const metadata: Metadata = {
   title: "Gsap demos",
 };
+const eurostileExt = localFont({
+  src: '../public/fonts/MajorMonoDisplay-Regular.ttf', // путь до нашего файла
+  variable: '--font-major', // название нашей css-переменной
+});
 
 export default function RootLayout({
   children,
@@ -14,10 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={'antialiased'}
+        className={`antialiased ${eurostileExt.variable}`}
       >
         {children}
-        <script src="js/gsap/GSDevTools.min.js"></script>
       </body>
     </html>
   );

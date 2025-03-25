@@ -13,10 +13,10 @@ function TextDemo(props: Props) {
     useGSAP(() => {
         const tw = gsap.timeline({
             delay: 0.6,
+            repeat: -1,
         })
         tw.to('#text', {
             duration: 2,
-            delay: 1,
             text: {
                 value: "Я вас не слышу  ",
                 newClass: 'text-red-600',
@@ -28,7 +28,6 @@ function TextDemo(props: Props) {
         })
             .to('#text1', {
                 duration: 2,
-                delay: 1,
                 text: {
                     value: "ГРОООМЧЕ ",
                     newClass: 'text-amber-600',
@@ -38,7 +37,6 @@ function TextDemo(props: Props) {
             })
             .to('#text2', {
                 duration: 2,
-                delay: 1,
                 text: {
                     value: "правильно - СПАНЧ-БОБ",
                     newClass: 'text-lime-600',
