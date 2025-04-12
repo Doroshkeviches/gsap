@@ -23,8 +23,9 @@ export function Bmw(props: Props) {
 
 
   useEffect(() => {
+    console.log(materials)
     materials.glack.map = glack; // Устанавливаем текстуру
-    // materials.glack.color = new THREE.Color('white');
+    materials.glack.color = new THREE.Color('white');
     materials.glack.needsUpdate = true;
 
   },[glack])

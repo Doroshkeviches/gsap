@@ -13,21 +13,23 @@ import { positions } from './positions'
 function KitchenCopy(props) {
     const { } = props
 
-    const [current] = useState(() => new THREE.Object3D())
-useEffect
+    const [position, setPosition] = useState(positions.frontLeft.position)
+    const [rotation, setRotation] = useState(positions.frontLeft.rotation)
+
     const handleFrontLeftView = () => {
-        current.position.set(...positions.frontLeft.position)
-        current.rotation.set(...positions.frontLeft.rotation)
-        current.rotation.fromArray(positions.frontLeft.rotation)
+        setPosition(positions.frontLeft.position)
+        setRotation(positions.frontLeft.rotation)
+
     }
     const handleFrontRightView = () => {
-        current.position.set(...positions.fronRight.position)
-        current.rotateY(-2)
+        setPosition(positions.frontRight.position)
+        setRotation(positions.frontRight.rotation)
+
 
     }
     const handleNearView = () => {
-        current.position.set(...positions.near.position)
-        current.rotation.set(...positions.near.rotation)
+        setPosition(positions.near.position)
+        setRotation(positions.near.rotation)
     }
 
     return (
@@ -56,7 +58,7 @@ useEffect
                     <Effects />
                     {/* <DragControls> */}
                     <FaceLandmarker>
-                        <Scene current={current}  />
+                        <Scene pos={position} rot={rotation} />
                     </FaceLandmarker>
                     {/* </DragControls> */}
                     <CameraControls />

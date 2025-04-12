@@ -1,0 +1,97 @@
+
+// todo: finish states
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: grey;
+  width: 100%;
+
+  .label {
+    position: absolute;
+    transform: translateY(14px);
+    transition: transform 250ms ease-in-out;
+    top: 0;
+    padding-top: inherit;
+
+    span {
+      color: red;
+    }
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input[type='number'],
+  input[type="number"]:hover,
+  input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+  }
+
+  .input-wrapper {
+    cursor: text;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    background-color: grey;
+    height: 60px;
+    align-items: center;
+    border: 1px grey solid;
+
+    .input,
+    .textarea {
+      flex: 1;
+      align-self: flex-end;
+      color: black;
+      background-color: transparent;
+    }
+
+
+
+    .textarea {
+      resize: none;
+      height: calc(100% - 20px);
+      margin-top: 20px;
+      align-self: flex-start;
+    }
+
+    .label.active,
+    &:focus-within .label {
+      transform: translateY(0);
+    }
+
+    padding: 8px 20px 12px;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: grey;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &.has-error {
+      border-color: red;
+
+      &:hover,
+      &:focus-within {
+        border-color: red;
+      }
+    }
+  }
+
+  .textarea-wrapper {
+    height: 140px;
+  }
+
+  .margin-top {
+    margin-top: 4px;
+  }
+}

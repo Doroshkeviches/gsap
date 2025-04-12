@@ -53,7 +53,7 @@ const config: Config = {
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
 				},
-				'jopa': '#000000',
+				'input-border-animation-color': '#8871e3',
 			},
 			spacing: {
 				'128': '700px',

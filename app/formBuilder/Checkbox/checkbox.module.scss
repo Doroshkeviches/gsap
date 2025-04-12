@@ -1,0 +1,66 @@
+
+.container {
+  display: flex;
+  gap: 8px;
+
+  &:hover input:not(:checked) ~ .box,
+  &.error input:not(:checked) ~ .box {
+    outline-color: red;
+  }
+
+  &.error input:checked:not(:disabled) ~ .box {
+    background: red;
+    color: red;
+  }
+
+  &:not(.error) input:checked:not(:disabled) ~ .box {
+    background: red;
+    color: white;
+
+    &:hover {
+      background: red;
+    }
+  }
+
+  input:disabled {
+    ~ .box {
+      outline-color: grey;
+      background: grey;
+      color: white;
+    }
+
+    ~ .label-wrap {
+      color: grey;
+    }
+  }
+
+  .box {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+
+    padding: 4px;
+    outline: 1px solid grey;
+    cursor: pointer;
+
+    transition: 250ms ease-in-out;
+    transition-property: background, color, outline;
+
+    svg.visible {
+      opacity: 1;
+    }
+
+    svg {
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+    }
+  }
+
+  .label-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

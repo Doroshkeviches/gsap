@@ -6,7 +6,8 @@ import Lambo from './Lambo'
 import FaceCamera from './FaceCamera'
 
 type Props = {
-    current: any,
+    pos: any,
+    rot: any
 }
 function Scene(props: Props) {
     const { nodes, materials } = useGLTF("/lamborghini.glb") as any
@@ -22,7 +23,7 @@ function Scene(props: Props) {
             <Spoiler nodes={nodes} materials={materials} />
             <Wheel nodes={nodes} materials={materials} />
             <Body nodes={nodes} materials={materials} /> */}
-            <FaceCamera {...props}/>
+            <FaceCamera pos={props.pos} rot={props.rot}/>
             <Lambo />
         </>
     )

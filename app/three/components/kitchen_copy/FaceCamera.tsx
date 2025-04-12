@@ -1,43 +1,43 @@
 'use client'
 import * as THREE from 'three'
-import { Sky, Bvh, Line, OrbitControls, Environment, Lightformer, DragControls, CameraControls, FaceControls, PerspectiveCamera, useHelper, FaceLandmarker } from '@react-three/drei'
-import { useThree, useFrame, Canvas, Euler } from '@react-three/fiber'
-import { EffectComposer, N8AO, Outline, Selection, TiltShift2, ToneMapping } from '@react-three/postprocessing'
+import {
+    FaceControls,
+    PerspectiveCamera,
+    FaceControlsApi
+} from '@react-three/drei'
+import { useThree, useFrame,  } from '@react-three/fiber'
 import { easing } from 'maath'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Scene from './Scene'
-import { useControls, button, buttonGroup, folder } from 'leva'
-import { Button } from '@/components/ui/button'
-import { positions } from './positions'
+import React, {LegacyRef, useCallback, useLayoutEffect, useRef, useState} from 'react'
 import { IPos } from '@/app/dust-2/Scene'
-import { MathUtils } from 'three'
+import {Object3D} from "three";
 
 
 type Props = {
-    pos: IPos,
+    pos: number[],
+    rot: number[]
 }
 
-function FaceCamera({ pos }: Props) {
+function FaceCamera({ pos, rot }: Props) {
 
     const [userCam, setUserCam] = useState<THREE.PerspectiveCamera | null>()
     const [current] = useState(() => {
-        const obj = new THREE.Object3D()
-        obj.position.set(...pos.position)
+        const obj = new Object3D()
+        obj.position.set(0,0,0)
+        obj.rotation.set(0,0,0)
         return obj
     })
-
 
     const userCamRef = useRef()
     // useHelper(gui.camera !== 'user' && userCamRef, THREE.CameraHelper)
 
 
     const controls = useThree((state) => state.controls)
-    const faceControlsApiRef = useRef()
+    const faceControlsApiRef:LegacyRef<FaceControlsApi | undefined> = useRef(undefined)
 
     const screenMatRef = useRef(null)
     const onVideoFrame = useCallback(
         (e) => {
-            controls.detect(e.texture.source.data, e.time)
+            controls?.detect(e.texture.source.data, e.time)
             if (screenMatRef.current) {
                 screenMatRef.current.map = e.texture
             }
@@ -46,31 +46,23 @@ function FaceCamera({ pos }: Props) {
 
     useFrame((_, delta) => {
         if (faceControlsApiRef.current) {
+            const target = faceControlsApiRef.current.computeTarget();
 
-            const target = faceControlsApiRef.current.computeTarget()
+            // Повернуть target по Y на 180 градусов
+            // target.rotation.y += Math.PI;
 
-            faceControlsApiRef.current.update(delta, target);
-            // userCam.position.copy(target.position);
-            // userCam.rotation.copy(target.rotation);
-            // console.log(current.rotation,initialRotation)
-
-
-
-            const eps = 1e-9
-            // console.log(target)
-            // easing.damp3(current.position, target.position, gui.smoothTime, delta, undefined, undefined, eps)
-            easing.dampE(current.rotation, target.rotation, 1, delta, undefined, undefined, eps)
-
-            // userCam.position.copy(current.position)
-            userCam.rotation.copy(current.rotation)
+            const eps = 1e-9;
+            easing.dampE(current.rotation, target.rotation, 1, delta, undefined, undefined, eps);
+            userCam.rotation.copy(current.rotation);
+            userCam.position.copy(current.position);
 
         }
-    })
+    });
 
 
     return (
         <>
-            <group rotation={current.rotation} position={current.position}>
+            <group rotation={new THREE.Euler(...rot)} position={new THREE.Vector3(...pos)}>
                 <FaceControls
                     camera={userCam}
                     ref={faceControlsApiRef}
@@ -78,8 +70,6 @@ function FaceCamera({ pos }: Props) {
                     manualUpdate
                     manualDetect
                     onVideoFrame={onVideoFrame}
-                    facemesh={{ position: pos.position }}
-                    // debug={gui.camera !== 'user'}
                 />
                 <PerspectiveCamera
                     ref={(cam) => {
